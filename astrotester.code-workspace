@@ -1,0 +1,26 @@
+{
+    "folders": [
+        {
+            "name": "Frontend (React)",
+            "path": "Frontend"
+        },
+        {
+            "name": "Backend - Java",
+            "path": "backend/java"
+        },
+        {
+            "name": "Backend - Python",
+            "path": "backend/python"
+        }
+    ],
+    "settings": {
+        "java.project.sourcePaths": ["backend/java/src"],
+        "python.defaultInterpreterPath": "backend/python/venv/bin/python",
+        "files.exclude": {
+            "**/node_modules":true,
+            "**/.gradle":true,
+            "**/build":true,
+            "**/__pycache__":true
+        }
+    }
+}
