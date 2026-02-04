@@ -14,13 +14,22 @@
         }
     ],
     "settings": {
-        "java.project.sourcePaths": ["backend/java/src"],
+        "java.jdt.ls.java.home": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.17.10-hotspot",
+        "java.configuration.runtimes": [
+            {
+                "name": "JavaSE-17",
+                "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.17.10-hotspot",
+                "default": true
+            }
+        ],
+        "maven.terminal.useJavaHome": true,
         "python.defaultInterpreterPath": "backend/python/venv/bin/python",
         "files.exclude": {
-            "**/node_modules":true,
-            "**/.gradle":true,
-            "**/build":true,
-            "**/__pycache__":true
-        }
+            "**/node_modules": true,
+            "**/.gradle": true,
+            "**/build": true,
+            "**/__pycache__": true
+        },
+        "java.configuration.updateBuildConfiguration": "interactive"
     }
 }
