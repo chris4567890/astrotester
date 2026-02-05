@@ -1,4 +1,10 @@
-export default function searchField(){
+
+export default function SearchField() {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted!');
+    };
+
     return(
         <>
             <div id="searchField">

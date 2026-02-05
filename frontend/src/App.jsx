@@ -1,15 +1,19 @@
-import {BrowserRouter} from react-router-dom
-import searchField from "./components/SearchField"
-return(
-    <>
-        <div>
-            <BrowserRouter>
-                <searchField />
-                <Routes>
+import React from 'react';
+import { BrowserRouter, Routes } from 'react-router-dom'
+import SearchField from './components/SearchField'
 
-                </Routes>
-            </BrowserRouter>
-        </div>
-    </>
-)
+function App() {
+    return(
+        <>
+            <div>
+                <BrowserRouter>
+                    <SearchField />
+                    <Routes>
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        </>
+    )
+}
 
+export default App
