@@ -4,8 +4,11 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.logging.Handler;
+import io.javalin.http.Context;
+
+import io.javalin.http.Handler;
 
 public class QuerryController {
 
@@ -22,39 +25,32 @@ public class QuerryController {
         return instance;
     }
 
-    public static Handler search(){
-        return ctx ->{
+    public static Handler search() {
+        return ctx -> {
             try {
                 String query = ctx.queryParam("q");
-                if(query == null || query.isBlank()){
+                if (query == null || query.isBlank()) {
                     ctx.status(400);
-                    throw new ApiException(400,"missing query parameter");
+                    throw new ApiException(400, "missing query parameter");
                 }
-                String encodedQuery =
-                    URLEncoder.encode(query,StandardCharsets.UTF_8);
                 
-                    HttpClient client = HttpClient.newHttpClient();
-                    HttpRequest request = HttpRequest.newBuilder()
-                            .uri(URI.create"http://localhost:5000/hello?query=" + encodedQuery
+                String encodedQuery = URLEncoder.encode(query, StandardCharsets.UTF_8);
+                
+                HttpClient client = HttpClient.newHttpClient();
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create("http://localhost:5000/hello?query=" + encodedQuery))
+                        .GET()
+                        .build();
+                
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                
+                ctx.json(response.body());
 
-                            ))
-                            .GET()
-                            .build();
-                    
-                    HttpResponse<String> response =
-                            client.send(request,HttpResponse.BodyHandlers.ofString());
-                    
-                    ctx.json(response.body());        
-
-
-            }catch (Exception e){
+            } catch (Exception e) {
                 ctx.status(500);
-                throw new ApiException(
-                        500,
-                        "error calling python service: "+ e.getMessage()
-                );
+                throw new ApiException(500, "error calling python service: " + e.getMessage());
             }
-        }
+        }; 
     }
-
 }
+
