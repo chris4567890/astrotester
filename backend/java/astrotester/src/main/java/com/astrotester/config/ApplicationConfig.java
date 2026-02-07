@@ -3,7 +3,13 @@ package com.astrotester.config;
 import io.javalin.*;
 import io.javalin.apibuilder.EndpointGroup;
 
+import java.util.logging.Logger;
+
+import org.eclipse.jetty.http.HttpStatus;
+
+import com.astrotester.restSecurity.exceptions.ApiException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class ApplicationConfig {
     
@@ -42,6 +48,22 @@ public class ApplicationConfig {
         app.start(port);
         return appConfig;
     }
+
+    public ApplicationConfig setExceptionHandling(){
+        app.exception(ApiException.class,(e,ctx) ->{
+            ObjectNode exception = Logger.log(e.getStatus(),e.getMessage(),ctx.ip());
+            ctx.json(exception).status(e.getStatus());
+        });
+        app.exception(NumberFormatException.class, (e,ctx)->{
+            ObjectNode exception = Logger.log(HttpStatus.forStatus(400),e.getMessage(),ctx.ip());
+            ctx.json(exception).status(HttpStatus.forStatus(400));
+        });
+        app.exception(Exception.class,(e,ctx)->{
+            ObjectNode exception = Logger.log(HttpStatus.forStatus(500),e.getMessage(),ctx.ip());
+            ctx.json(exception).status(HttpStatus.forStatus(500));
+        });
+        return appConfig;
+    }        
 
     public ApplicationConfig configureCors(){
         app.before(ctx -> {
