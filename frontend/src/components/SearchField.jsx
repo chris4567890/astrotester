@@ -37,6 +37,14 @@ export default function SearchField() {
                     <br/>
                     <button type="submit">search</button>
                 </form>
+                {
+                    results && (
+                        <div>
+                            <h3>results</h3>
+                            <div>{JSON.stringify(results)}</div>
+                        </div>
+                    )
+                }
             </div>
         </>
     )
