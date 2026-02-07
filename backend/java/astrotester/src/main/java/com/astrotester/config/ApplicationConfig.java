@@ -65,6 +65,11 @@ public class ApplicationConfig {
         return appConfig;
     }        
 
+    public ApplicationConfig closeServer(){
+        app.close();
+        return appConfig;
+    }    
+
     public ApplicationConfig configureCors(){
         app.before(ctx -> {
             ctx.header("Access-Control-Allow-Origin", "*");
