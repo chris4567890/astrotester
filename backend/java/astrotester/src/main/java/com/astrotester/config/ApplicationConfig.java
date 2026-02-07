@@ -3,9 +3,9 @@ package com.astrotester.config;
 import io.javalin.*;
 import io.javalin.apibuilder.EndpointGroup;
 
-import java.util.logging.Logger;
+import com.astrotester.utils.Logger;
 
-import org.eclipse.jetty.http.HttpStatus;
+import io.javalin.http.HttpStatus;
 
 import com.astrotester.restSecurity.exceptions.ApiException;
 import com.fasterxml.jackson.databind.ObjectMapper;
