@@ -20,7 +20,7 @@ def searchActivator():
             'data': [list(row) for row in result]
 
         }
-        return jsonify(result_dict) 
+        return jsonify(str(result_dict)) 
     except Exception as e:
         return jsonify({'error':str(e)}),500   
 
