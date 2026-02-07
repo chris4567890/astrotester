@@ -39,7 +39,7 @@ public class QuerryController {
                 
                 HttpClient client = HttpClient.newHttpClient();
                 HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create("http://localhost:5000/hello?query=" + encodedQuery))
+                        .uri(URI.create("http://localhost:5000/search?query=" + encodedQuery))
                         .GET()
                         .build();
                 
