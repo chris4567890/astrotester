@@ -1,7 +1,8 @@
-package main.java.com.astrotester.config;
+package com.astrotester.config;
 
 import com.astrotester.restSecurity.controllers.QuerryController;
 import static io.javalin.apibuilder.ApiBuilder.*;
+import io.javalin.apibuilder.EndpointGroup;
 public class Routes {
     private static QuerryController querryController ;
     
