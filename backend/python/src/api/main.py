@@ -1,5 +1,6 @@
 from flask import Flask,request,jsonify
-from astrofiles.astroSearches import AstronomySearch
+from ..astrofiles.astroSearches import AstronomySearch
+
 app = Flask(__name__)
 
 @app.route('/search', methods=['GET'])

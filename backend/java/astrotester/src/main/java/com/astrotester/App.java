@@ -19,9 +19,11 @@ public class App
 
         ApplicationConfig app = ApplicationConfig.getInstance()
             .initiateServer()
-            .setExceptionHandling()
-            .startServer(7070)
+            .configureCors()
             .setRoutes(Routes.getRoutes(isTesting))
-            .configureCors();
+            .setExceptionHandling()
+            .startServer(7070);
+            
+            
     }    
 }

@@ -32,7 +32,7 @@ public class ApplicationConfig {
         String separator = System.getProperty("file.separator");
         app = Javalin.create(config -> {
             config.http.defaultContentType="application/json";
-            config.routing.contextPath="/api";
+            config.routing.contextPath="/";
             config.plugins.enableDevLogging();
 
         }); 
